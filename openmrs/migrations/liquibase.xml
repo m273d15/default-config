@@ -85,6 +85,7 @@
             INSERT INTO location_tag_map(location_id, location_tag_id) VALUES(@location_id, @location_tag_id);
         </sql>
     </changeSet>
+    <include file ="addObsPathSplitterProperty.xml"/>
     <changeSet id="default-202009011116" author="Deedee Lee">
         <comment> Add email address in registration page </comment>
         <sql>
