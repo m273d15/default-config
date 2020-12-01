@@ -194,7 +194,7 @@ angular.module('bahmni.common.displaycontrol.custom')
         $scope.openJitsiMeet = function (appointmentIndex) {
             var jitsiMeetingId = $scope.upcomingAppointmentsUUIDs[appointmentIndex];
             appService.setTeleConsultationVars(jitsiMeetingId, true);
-        }; 
+        };
     };
     return {
         restrict: 'E',
