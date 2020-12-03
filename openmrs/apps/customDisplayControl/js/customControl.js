@@ -181,10 +181,10 @@ angular.module('bahmni.common.displaycontrol.custom')
             var timePeriod = time.split("-")
             var dateTimeStart = date[2] + "/" + date[1] + "/" + date[0] + " " + timePeriod[0].trim() + " UTC";
             var dateTimeEnd =  date[2] + "/" + date[1] + "/" + date[0] + " " + timePeriod[1].trim() + " UTC";
-            var startTime = new Date(dateTimeStart).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-            var endTime = new Date(dateTimeEnd).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+            var startTime = Bahmni.Common.Util.DateUtil.formatTime(new Date(dateTimeStart).getTime());
+            var endTime = Bahmni.Common.Util.DateUtil.formatTime(new Date(dateTimeEnd).getTime());
             return startTime + " - " + endTime;
-        }
+        };
         $q.all([getUpcomingAppointments(), getPastAppointments()]).then(function (response) {
             $scope.upcomingAppointments = response[0].data;
             $scope.upcomingAppointmentsUUIDs = [];
