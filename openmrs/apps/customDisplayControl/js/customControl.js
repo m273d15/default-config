@@ -205,4 +205,13 @@ angular.module('bahmni.common.displaycontrol.custom')
         },
         template: '<ng-include src="contentUrl"/>'
     };
+}]).directive('vaccination', ['appService', function (appService) {
+    var link = function ($scope) {
+        $scope.contentUrl = appService.configBaseUrl() + "/customDisplayControl/views/vaccination.html";
+    };
+    return {
+        restrict: 'E',
+        template: '<ng-include src="contentUrl"/>',
+        link: link
+    }
 }]);
