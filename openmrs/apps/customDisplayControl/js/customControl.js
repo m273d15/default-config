@@ -208,6 +208,7 @@ angular.module('bahmni.common.displaycontrol.custom')
 }]).directive('vaccination', ['appService', function (appService) {
     var link = function ($scope) {
         $scope.contentUrl = appService.configBaseUrl() + "/customDisplayControl/views/vaccination.html";
+        $scope.certificateUrl = appService.configBaseUrl() + "/customDisplayControl/views/covid19VaccineCertificate.html";
     };
     return {
         restrict: 'E',

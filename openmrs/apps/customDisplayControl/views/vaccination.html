@@ -1,5 +1,19 @@
 <section class="app-dashboard-integration">
-    <h2 class="section-title" ng-click="goToListView()"><span>{{ config.title | titleTranslate}}</span></h2>
+    <h2 class="section-title"><span>{{ config.title | titleTranslate}}</span></h2>
 
     <div class="placeholder-text">{{::"DASHBOARD_NO_VACCINATION_DETAILS_KEY" | translate}}</div>
+    <div>
+        <ul>
+            <li class="clearfix">
+                <span>COVID-19 Certificate</span>
+                <span class="has-link fl formDataEdit"
+                    ng-dialog={{certificateUrl}}
+                    ng-dialog-class="ngdialog-theme-default ng-dialog-all-details-page ng-dialog-view"
+                    ng-dialog-scope="this"
+                    ng-dialog-data="{{getConfigToFetchDataAndShow(data)}}">
+                    <i class="fa fa-eye"></i>
+                </span>
+            </li>
+        </ul>
+    </div>
 </section>
