@@ -7,13 +7,14 @@
 
     <div ng-if="dosages.length > 0">
         <ul>
-            <li class="clearfix">
+            <li class="placeholder-text" style="display: flex;justify-content: flex-start;">
                 <span>COVID-19 Certificate</span>
-                <span class="has-link fl formDataEdit"
+                <span
                     ng-dialog={{certificateUrl}}
                     ng-dialog-class="ngdialog-theme-default ng-dialog-all-details-page ng-dialog-view"
                     ng-dialog-scope="this"
-                    ng-dialog-data="{{getConfigToFetchDataAndShow(data)}}">
+                    ng-dialog-data="{{getConfigToFetchDataAndShow(data)}}"
+                    style="margin-left: auto">
                     <i class="fa fa-eye"></i>
                 </span>
             </li>
