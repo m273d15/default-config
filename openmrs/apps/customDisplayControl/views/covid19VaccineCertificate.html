@@ -23,27 +23,26 @@
                     <span>Passport No: </span>
                 </td>
                 <td>
-                    <span>Address: {{patient.address.address1}}</span>
+                    <span>
+                        Address: {{patient.address.address1}}, {{patient.address.address2}}, {{patient.address.address3}},
+                        {{patient.address.cityVillage}}, {{patient.address.countyDistrict}}, {{patient.address.stateProvince}}
+                    </span>
                 </td>
             </tr>
         </table>
         <table class="table-header">
             <tr>
                 <th>
-                    <span>Vaccination Details</span>
+                    <h1><span>Vaccination Details</span></h1>
                 </th>
             </tr>
-            <tr>
-                <th>
-                    <span>Dose 1</span>
-                </th>
-            </tr>
-            <tr>
+            <tr ng-repeat="dosage in dosages" >
                 <td>
+                    <h2><span>Dose </span>{{$index + 1}}</h2>
                     <ul>
-                        <li><span>Date:</span></li>
-                        <li><span>Manufacturer:</span></li>
-                        <li><span>Lot Number:</span></li>
+                        <li><span>Date: </span>{{dosage.groupMembers[0].value}}</li>
+                        <li><span>Manufacturer: </span>{{dosage.groupMembers[1].value}}</li>
+                        <li><span>Lot Number: </span>{{dosage.groupMembers[3].value}}</li>
                     </ul>
                 </td>
             </tr>

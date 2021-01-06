@@ -205,10 +205,14 @@ angular.module('bahmni.common.displaycontrol.custom')
         },
         template: '<ng-include src="contentUrl"/>'
     };
-}]).directive('vaccination', ['appService', function (appService) {
+}]).directive('vaccination', ['observationsService', 'appService', 'spinner', function (observationsService, appService, spinner) {
     var link = function ($scope) {
+        var conceptNames = ["Dosage"];
         $scope.contentUrl = appService.configBaseUrl() + "/customDisplayControl/views/vaccination.html";
         $scope.certificateUrl = appService.configBaseUrl() + "/customDisplayControl/views/covid19VaccineCertificate.html";
+        spinner.forPromise(observationsService.fetch($scope.patient.uuid, conceptNames, "latest", undefined, $scope.visitUuid, undefined).then(function (response) {
+            $scope.dosages = response.data;
+        }));
     };
     return {
         restrict: 'E',
