@@ -3,7 +3,7 @@
   top: 40%;
   transform: translateY(-40%);
   width: 90%;
-  left: 10%;
+  left: 5%;
 }
 
 .template-container {
@@ -11,7 +11,7 @@
   border-radius: 5px 5px 0 0;
   background: #FFFFFF;
   padding: 10px 20px;
-  width: 80%;
+  width: 90%;
   margin-bottom: 25px;
   margin-top: 25px;
   height: 98%;
@@ -40,6 +40,7 @@ table {
 
 table td {
   font-size: 12px;
+  width: 50%;
 }
 
 table tr {
