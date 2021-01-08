@@ -1,0 +1,63 @@
+<div class="template-container">
+    <h2 class="section-title"><span>Certificate of COVID-19 Vaccination</span></h2>
+    <section>
+        <table class="table-header">
+            <tr>
+                <td>
+                    <span>Name: {{patient.name}}</span>
+                </td>
+                <td>
+                    <span>Sex: </span><span ng-bind-html="patient.genderText"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Age: </span><span ng-bind-html="patient.ageText"></span>
+                </td>
+                <td>
+                    <span>Date Of Birth: </span>{{patient.birthdate | date: 'MMM dd, yyyy'}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Passport No: </span>
+                </td>
+                <td>
+                    <span>
+                        Address: {{patient.address.address1}}, {{patient.address.address2}}, {{patient.address.address3}},
+                        {{patient.address.cityVillage}}, {{patient.address.countyDistrict}}, {{patient.address.stateProvince}}
+                    </span>
+                </td>
+            </tr>
+        </table>
+        <table class="table-header">
+            <tr>
+                <th>
+                    <h1><span>Vaccination Details</span></h1>
+                </th>
+            </tr>
+            <tr ng-repeat="dosage in dosages" >
+                <td>
+                    <h2><span>Dose </span>{{$index + 1}}</h2>
+                    <ul>
+                        <li><span>Date: </span>{{dosage.groupMembers[0].value}}</li>
+                        <li><span>Manufacturer: </span>{{dosage.groupMembers[1].value}}</li>
+                        <li><span>Lot Number: </span>{{dosage.groupMembers[3].value}}</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        <table class="table-header">
+            <tr>
+                <td>
+                    <ul>
+                        <li><br><br><br><br></li>
+                        <li><span>Signature/Stamp of Designated Officer:</span></li>
+                        <li><span>Name:</span></li>
+                        <li><span>Date:</span></li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </section>
+</div>
