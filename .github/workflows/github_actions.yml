@@ -1,0 +1,40 @@
+name: Default config - Github actions CI/CD
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ stream3/master ]
+
+jobs:
+  build:
+    env:
+      PACKAGE_NAME: default_config_${{ github.run_number }}.zip
+      CODEDEPLOY_APPLICATION_NAME: default-config
+      S3_BUCKET_NAME: bahmni-covid-19-qa-demo
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Package
+        run: |
+          ./scripts/package.sh
+          mv ./target/default_config.zip $PACKAGE_NAME
+          cd deployment_script
+          zip -r ../$PACKAGE_NAME *
+
+      - name: Configure AWS credentials from Test account
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_DEPLOY_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_DEPLOY_SECRET_ACCESS_KEY }}
+          aws-region: ap-south-1
+
+      - name: Package, push to s3 and create deployment
+        run: |
+          cd staging
+          # Zips the current dir content, pushes to s3 and creates a deployment
+          aws deploy push \
+            --application-name default_config \
+            --s3-location s3://default_config/default_config_${{ github.run_number }}.zip
+
